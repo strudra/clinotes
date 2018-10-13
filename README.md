@@ -3,6 +3,10 @@
 * Command-Line tool allowing you to create, read, and delete notes
 * Project status: working/prototype
 
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![GitHub license](https://img.shields.io/github/license/strudra/clinotes.svg)](https://github.com/strudra/clinotes/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/strudra/clinotes.svg)](https://github.com/strudra/clinotes/stargazers)
+
 # Installation
 
 Instructions:
