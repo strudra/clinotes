@@ -6,10 +6,11 @@ const notes = require('./notes.js')
 
 // use yargs for command line
 const titleArgument = { describe: 'title of a note', demand: true, alias: 't' }
+const bodyArgument = {describe: 'body of a note', demand: true, alias: 'b'}
 const argv = yargs
   .command('add', 'adds a new note', {
     title: titleArgument,
-    body: { describe: 'body of a note', demand: true, alias: 'b' }
+    body: bodyArgument
   })
   .command('list', 'prints all notes')
   .command('read', 'prints a note with title specified', {
@@ -18,8 +19,13 @@ const argv = yargs
   .command('remove', 'removes a note with title specified', {
     title: titleArgument
   })
+  .command('update', 'updates a note with title and body specified', {
+    title: titleArgument,
+    body: bodyArgument
+  })
   .help()
   .argv
+
 const command = argv._[0]
 
 // read from command line
@@ -54,6 +60,17 @@ if (command === 'add') {
       console.error('error =>', err.message, err.stack)
     } else {
       console.log('note successfully deleted.')
+    }
+  })
+} else if (command === 'update') {
+  notes.updateNote(argv.title, argv.body, (err) => {
+    if (err) {
+      console.error('error =>', err.message, err.stack)
+    } else {
+      console.log('note successfully updated.')
+      console.log('new note info:')
+      console.log('title =>', argv.title)
+      console.log('body =>', argv.body)
     }
   })
 }

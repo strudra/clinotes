@@ -47,9 +47,24 @@ const removeNote = (title, cb) => {
   }
 }
 
+const updateNote = (title, body, cb) => {
+  var notes = fetchNotes()
+
+  console.log(`${title}: ${body}`)
+
+  if (title in notes) {
+    notes[title] = {title, body}
+    writeNotes(notes)
+    return cb()
+  } else {
+    return cb(Error('note with specified title does not exist.'))
+  }
+}
+
 module.exports = {
   addNote,
   getAll,
   readNote,
-  removeNote
+  removeNote,
+  updateNote
 }
